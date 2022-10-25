@@ -1,0 +1,166 @@
+---
+// Component Imports
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import type { Project } from '../types';
+
+// Data Fetching: List all Markdown posts in the repo.
+const projects = await Astro.glob<Project>('./project/**/*.md');
+const featuredProject = projects[0]!;
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<MainHead
+			title="Haffi Mazhar - Software Developer"
+		/>
+		<style>
+			.wrapper {
+				margin-top: 2em;
+				margin-bottom: 2em;
+			}
+
+			.name {
+				flex-direction: column;
+				justify-content: center;
+				padding-left: 2rem;
+			}
+
+			@media (min-width: 750px) {
+				.overlay {
+					padding-left: 4rem;
+				}
+			}
+
+			.title {
+				font-weight: 900;
+				font-size: var(--f-u6);
+				margin-bottom: 0.5rem;
+				margin-top: 0;
+				color: pink;
+			}
+
+			@media (min-width: 750px) {
+				.title {
+					font-size: var(--f-u12);
+				}
+			}
+
+			.grid {
+				display: grid;
+				grid-gap: 2rem;
+			}
+
+			@media (min-width: 1200px) {
+				.grid {
+					grid-template-columns: 2fr 1fr;
+				}
+			}
+
+			.sectionTitle {
+				font-weight: 700;
+				font-size: var(--f-u8);
+				margin-top: 4rem;
+				margin-bottom: 2rem;
+			}
+
+			.role {
+				font-weight: 900;
+				color: pink;
+			}
+
+			@media (min-width: 750px) {
+				.role {
+					font-size: var(--f-u3);
+				}
+			}
+
+			.bio {
+				line-height: 2;
+				margin-bottom: 2rem;
+			}
+
+			.bio > span:first-of-type {
+				line-height: 1;
+				margin-bottom: 0.5em;
+				display: block;
+				font-weight: 700;
+				font-size: var(--f-u4);
+			}
+
+			.buttonContainer {
+				text-align: center;
+				margin-top: 2em;
+			}
+
+			.background {
+				background-color: #222742;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+		</style>
+	</head>
+	<div class="background">
+	<body>
+		<Nav />
+		<header>
+			<div class="container">
+				<script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
+	
+				<lottie-player
+						autoplay={ true }
+						loop={ true }
+						mode="normal"
+						speed="1"
+						// src="https://assets1.lottiefiles.com/packages/lf20_4kx2q32n.json"  python
+						// src="https://assets5.lottiefiles.com/packages/lf20_9e8yoqkm.json"  brown guy
+						src="https://assets2.lottiefiles.com/private_files/lf30_2oxijfub.json"
+						style="width: 320px"
+						>
+				</lottie-player>
+	
+				<div class="name">
+					<h1 class="title">
+						Haffi Mazhar
+					</h1>
+						<span class="role">Software developer</span>
+				</div>
+			</div>
+		</header>
+		<main class="wrapper">
+			<div class="grid">
+				<div class="section">
+					<h3 class="sectionTitle">Projects</h3>
+					<PortfolioPreview project={featuredProject} />
+					<div class="buttonContainer">
+						<a href="/projects/" class="button">View All</a>
+					</div>
+				</div>
+				<div class="section">
+					<h3 class="sectionTitle">About me</h3>
+					<p class="bio">
+						<span>Hello!</span> I’m Jeanine, and this is my website. It was made using{' '}
+						<a href="https://github.com/withastro/astro" target="_blank" rel="nofollow"> Astro</a>,
+						a new way to build static sites. This is just an example template for you to modify.
+					</p>
+					<p>
+						<a href="/about">Read more</a>
+					</p>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+	</div>
+</html>
