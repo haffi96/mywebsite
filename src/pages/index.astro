@@ -3,17 +3,9 @@
 import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import type { Project } from '../types';
 
-// Data Fetching: List all Markdown posts in the repo.
-const projects = await Astro.glob<Project>('./project/**/*.md');
-const featuredProject = projects[0]!;
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+import {Content as Resume} from '../pages/resume.md';
 ---
-
 <html lang="en">
 	<head>
 		<MainHead
@@ -52,6 +44,7 @@ const featuredProject = projects[0]!;
 			}
 
 			.grid {
+				justify-content: center;
 				display: grid;
 				grid-gap: 2rem;
 			}
@@ -62,12 +55,6 @@ const featuredProject = projects[0]!;
 				}
 			}
 
-			.sectionTitle {
-				font-weight: 700;
-				font-size: var(--f-u8);
-				margin-top: 4rem;
-				margin-bottom: 2rem;
-			}
 
 			.role {
 				font-weight: 900;
@@ -83,14 +70,8 @@ const featuredProject = projects[0]!;
 			.bio {
 				line-height: 2;
 				margin-bottom: 2rem;
-			}
-
-			.bio > span:first-of-type {
-				line-height: 1;
-				margin-bottom: 0.5em;
-				display: block;
 				font-weight: 700;
-				font-size: var(--f-u4);
+				color: pink;
 			}
 
 			.buttonContainer {
@@ -141,23 +122,12 @@ const featuredProject = projects[0]!;
 		<main class="wrapper">
 			<div class="grid">
 				<div class="section">
-					<h3 class="sectionTitle">Projects</h3>
-					<PortfolioPreview project={featuredProject} />
-					<div class="buttonContainer">
-						<a href="/projects/" class="button">View All</a>
-					</div>
-				</div>
-				<div class="section">
-					<h3 class="sectionTitle">About me</h3>
 					<p class="bio">
-						<span>Hello!</span> I’m Jeanine, and this is my website. It was made using{' '}
+						I’m Haffi, and this is my website. It was made using{' '}
 						<a href="https://github.com/withastro/astro" target="_blank" rel="nofollow"> Astro</a>,
-						a new way to build static sites. This is just an example template for you to modify.
-					</p>
-					<p>
-						<a href="/about">Read more</a>
 					</p>
 				</div>
+				<Resume />
 			</div>
 		</main>
 		<Footer />
