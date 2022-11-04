@@ -4,7 +4,6 @@ import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-import {Content as Resume} from '../pages/resume.md';
 ---
 <html lang="en">
 	<head>
@@ -67,20 +66,18 @@ import {Content as Resume} from '../pages/resume.md';
 				}
 			}
 
-			.bio {
+			.section {
 				line-height: 2;
-				margin-bottom: 2rem;
 				font-weight: 700;
 				color: pink;
+				margin: auto;
+				display: flex;
+				justify-content: center;
 			}
 
 			.buttonContainer {
 				text-align: center;
 				margin-top: 2em;
-			}
-
-			.background {
-				background-color: #222742;
 			}
 
 			.container {
@@ -90,10 +87,16 @@ import {Content as Resume} from '../pages/resume.md';
 				align-items: center;
 			}
 
+			.footer {
+				position: absolute;
+				bottom: 10px;
+				width: 50%;
+				background-color: white;
+			}
+
 		</style>
 	</head>
-	<div class="background">
-	<body>
+	<body class="background">
 		<Nav />
 		<header>
 			<div class="container">
@@ -115,22 +118,17 @@ import {Content as Resume} from '../pages/resume.md';
 					<h1 class="title">
 						Haffi Mazhar
 					</h1>
-						<span class="role">Software developer</span>
 				</div>
 			</div>
 		</header>
 		<main class="wrapper">
-			<div class="grid">
 				<div class="section">
 					<p class="bio">
-						I’m Haffi, and this is my website. It was made using{' '}
-						<a href="https://github.com/withastro/astro" target="_blank" rel="nofollow"> Astro</a>,
+						I’m Haffi, a self-taught softwater developer with ~3 years professinal experience.
+						Here's my resume <a href="/resume">Resume</a>
 					</p>
 				</div>
-				<Resume />
-			</div>
 		</main>
 		<Footer />
 	</body>
-	</div>
 </html>

@@ -57,7 +57,7 @@
 body {
 	margin: 0;
 	color: var(--t-fg);
-	font-family: 'Inter', 'system-ui', sans-serif;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -70,7 +70,7 @@ img {
 }
 
 a {
-	color: var(--t-active);
+	color: pink 
 }
 
 h1 {
@@ -91,4 +91,8 @@ h1 {
 	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
+}
+
+.background {
+	background-color: #222742;
 }
