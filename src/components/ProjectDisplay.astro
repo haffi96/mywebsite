@@ -2,21 +2,45 @@
 const { project } = Astro.props;
 ---
 
-<div class="container">
-    <h2>{project.title}</h2>
-    <p>{project.frontmatter.techstack}</p>
-    <a href={project.githublink1}>Frontend</a>
-    <a href={project.githublink2}>Backend</a>
-    <div class="gif-wrapper">
-        <img src={project.frontmatter.preview} alt="project preview">
+<div class="project-container">
+    <div class="metadata">
+        <p class="title">{project.title}</p>
+        <p class="stack">{project.frontmatter.techstack}</p>
+        <div class="links">
+            <a>Repo links:</a>
+            <a href={project.githublink1}>Frontend</a>
+            <a href={project.githublink2}>Backend</a>
+        </div>
+        <img class="preview" src={project.frontmatter.preview} alt="project preview">
     </div>
 </div>
 
 <style>
-    .container {
-        border-bottom-color: white;
+    .project-container {
+        padding: 2%;
+        border: 5px solid pink;
+        border-radius: 5em;
+        text-align: center;
     }
-    .gif-wrapper {
-        padding: 10;
+
+    .metadata {
+        padding: 2%;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .stack {
+        font-size: small;
+    }
+
+    .preview {
+        border: 2px solid pink;
+        border-radius: 5em;
+    }
+
+    .links {
+        padding-bottom: 2%;
     }
 </style>
