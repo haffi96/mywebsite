@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.12.0",
     "astro": "^1.5.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",

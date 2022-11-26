@@ -3,7 +3,9 @@
 import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import ProjectDisplay from '../components/ProjectDisplay.astro';
 
+const projects = await Astro.glob('../pages/projects/*.mdx');
 ---
 <html lang="en">
 	<head>
@@ -94,6 +96,12 @@ import Footer from '../components/Footer.astro';
 				background-color: white;
 			}
 
+			.projects {
+				display: flex;
+				flex-direction: row;
+				/* flex-wrap: wrap; */
+			}
+
 		</style>
 	</head>
 	<body class="background">
@@ -125,8 +133,13 @@ import Footer from '../components/Footer.astro';
 				<div class="section">
 					<p class="bio">
 						I’m Haffi, a self-taught softwater developer with ~3 years professinal experience.
-						Here's my resume <a href="/resume">Resume</a>
 					</p>
+				</div>
+				<h2>PROJECTS</h2>
+				<div class="projects">
+					{projects.map(project =>
+						<ProjectDisplay project={project} />
+						)}
 				</div>
 		</main>
 		<Footer />
