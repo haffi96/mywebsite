@@ -5,12 +5,13 @@ const { project } = Astro.props;
     <button class="project-container">
         <div class="metadata">
             <p class="title">{project.title}</p>
-            <p class="stack">{project.frontmatter.techstack}</p>
+            <a class="stack">{project.frontmatter.techstack}</a>
             <div class="links">
                 <a>Repo links:</a>
                 <a href={project.githublink1}>Frontend</a>
                 <a href={project.githublink2}>Backend</a>
             </div>
+            <a class="md-link" href={project.url}>Read more...</a>
             <img class="preview" src={project.frontmatter.preview} alt="project preview">
         </div>
     </button>
@@ -26,7 +27,6 @@ const { project } = Astro.props;
     }
 
     .metadata {
-        padding: 5%;
         display: flex;
         flex-flow: column;
     }
@@ -37,6 +37,7 @@ const { project } = Astro.props;
 
     .stack {
         font-size: small;
+        padding: 5%;
     }
 
     .preview {
@@ -44,7 +45,7 @@ const { project } = Astro.props;
         border-radius: 5em;
     }
 
-    .links {
-        padding-bottom: 5%;
+    .md-link {
+        padding: 5%;
     }
 </style>
