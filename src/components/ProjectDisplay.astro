@@ -1,19 +1,20 @@
 ---
 const { project } = Astro.props;
 ---
-
-<div class="project-container">
-    <div class="metadata">
-        <p class="title">{project.title}</p>
-        <p class="stack">{project.frontmatter.techstack}</p>
-        <div class="links">
-            <a>Repo links:</a>
-            <a href={project.githublink1}>Frontend</a>
-            <a href={project.githublink2}>Backend</a>
+<a href={project.url}>
+    <button class="project-container">
+        <div class="metadata">
+            <p class="title">{project.title}</p>
+            <p class="stack">{project.frontmatter.techstack}</p>
+            <div class="links">
+                <a>Repo links:</a>
+                <a href={project.githublink1}>Frontend</a>
+                <a href={project.githublink2}>Backend</a>
+            </div>
+            <img class="preview" src={project.frontmatter.preview} alt="project preview">
         </div>
-        <img class="preview" src={project.frontmatter.preview} alt="project preview">
-    </div>
-</div>
+    </button>
+</a>
 
 <style>
     .project-container {
@@ -21,6 +22,7 @@ const { project } = Astro.props;
         border: 5px solid pink;
         border-radius: 5em;
         text-align: center;
+        background: none;
     }
 
     .metadata {
