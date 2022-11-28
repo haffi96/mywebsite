@@ -1,7 +1,8 @@
 ---
 const { project } = Astro.props;
 ---
-<a href={project.url}>
+<!-- <a href={project.url}> -->
+<a>
     <button class="project-container">
         <div class="metadata">
             <p class="title">{project.title}</p>
@@ -11,7 +12,7 @@ const { project } = Astro.props;
                 <a href={project.githublink1}>Frontend</a>
                 <a href={project.githublink2}>Backend</a>
             </div>
-            <a class="md-link" href={project.url}>Read more...</a>
+            <!-- <a class="md-link" href={project.url}>Read more...</a> -->
             <img class="preview" src={project.frontmatter.preview} alt="project preview">
         </div>
     </button>
