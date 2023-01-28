@@ -8,7 +8,6 @@ const { frontmatter } = Astro.props;
 <html>
   <head>
     <MainHead title="Projects" />
-    <!-- Add other Head elements here, like styles and meta tags. -->
     <title>{frontmatter.title}</title>
     <style>
       .background {
@@ -23,10 +22,8 @@ const { frontmatter } = Astro.props;
   </head>
   <body class="background">
     <Nav />
-    <!-- Add other UI components here, like common headers and footers. -->
     <h1>{frontmatter.techstack}</h1>
     <p class="toc-header">Summary:</p>
-    <!-- 2. Rendered HTML will be passed into the default slot. -->
     <slot />
     <Footer />
   </body>

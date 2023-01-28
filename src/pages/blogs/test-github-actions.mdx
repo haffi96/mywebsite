@@ -5,10 +5,15 @@ title: Testing CI docker push via github action locally
 
 ### Installs
 
-A tool called act makes this possible. It allows us to test run github actions locally. This can be useful for a quicker feedback loop than setting up a test github repository. Also in cases, setting up a testing repository may not be feasible i.e testing github organization or enterprise specigic things. Act won't let you test everything org specific but you can get pretty close
+A tool called [act](https://github.com/nektos/act) makes this possible. It allows us to test run github actions locally. This can be useful for a quicker feedback loop than setting up a test github repository. Also in cases, setting up a testing repository may not be feasible i.e testing github organization or enterprise specigic things. Act won't let you test everything org specific but you can get pretty close
 
 
 ### Getting started
+
+Pre-requisites:
+  - [Docker](https://www.docker.com/products/docker-desktop/)
+  - [act](https://github.com/nektos/act)
+
 
 ```sh
 
@@ -145,9 +150,10 @@ So, the folder structure should now look like this:
             | - workflows:
                 | - test-ci.yaml
         | - app.py
-        | Dockerfile
-        | requirements.txt
-        | .gitignore
+        | - Dockerfile
+        | - requirements.txt
+        | - .git
+        | - .gitignore
 
 
 ```
@@ -158,6 +164,7 @@ Now we can run the github action with act:
 ```sh
 
     act -w .github/workflows/test.yaml
+
 
 ```
 

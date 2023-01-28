@@ -1,7 +1,17 @@
 ---
-const holopin = await Astro.glob('../pages/holopin.md');
+const holopin = await Astro.glob("../pages/holopin.md");
 ---
 
 <a href="https://holopin.me/haff96">
-    <img src="https://holopin.me/haff96" alt="@haff96's Holopin board" />
+    <img
+        class="holopin-img"
+        src="https://holopin.me/haff96"
+        alt="@haff96's Holopin board"
+    />
 </a>
+
+<style>
+    .holopin-img {
+        border-radius: 20px;
+    }
+</style>

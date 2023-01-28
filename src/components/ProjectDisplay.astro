@@ -7,6 +7,11 @@ const { project } = Astro.props;
         <button class="project-container">
             <div class="metadata">
                 <p class="title">{project.title}</p>
+                {
+                    project.frontmatter.site ? (
+                        <a href={project.frontmatter.site}>Demo site</a>
+                    ) : null
+                }
                 <div class="links">
                     <a>{project.frontmatter.techstack}</a>
                     <a href={project.githublink1}>Repo</a>
