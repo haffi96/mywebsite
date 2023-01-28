@@ -86,7 +86,11 @@ Creating local docker registry or use the github container registry (ghcr)
 ```
 
 
-### Need a CI yaml file
+Now we need a file to define the structure of our github ci action
+
+This usually lives at .github/workflows/test-ci.yaml at the project root
+
+### Example CI yaml file w/ docker build-and-push plugin
 
 ```yaml
 
@@ -131,3 +135,31 @@ Creating local docker registry or use the github container registry (ghcr)
 
 
 ```
+
+So, the folder structure should now look like this:
+
+```sh
+
+    flask-app:
+        | - .github:
+            | - workflows:
+                | - test-ci.yaml
+        | - app.py
+        | Dockerfile
+        | requirements.txt
+        | .gitignore
+
+
+```
+
+
+Now we can run the github action with act:
+
+```sh
+
+    act -w .github/workflows/test.yaml
+
+```
+
+
+Note: You'll need to add `--container-architecture linux/amd64` if you're on M1 Mac

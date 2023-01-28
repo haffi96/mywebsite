@@ -6,13 +6,12 @@ const { frontmatter } = Astro.props;
 ---
 
 <head>
-    <MainHead title="Projects" />
+    <MainHead title="Blogs" />
     <title>{frontmatter.title}</title>
 </head>
 <body class="background">
     <Nav />
     <div class="main">
-        <h1>{frontmatter.techstack}</h1>
         <p class="blog-title">{frontmatter.title}</p>
         <slot />
     </div>
