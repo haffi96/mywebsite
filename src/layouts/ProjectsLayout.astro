@@ -1,13 +1,13 @@
 ---
-import Nav from '../components/Nav.astro';
-import MainHead from '../components/MainHead.astro';
-import Footer from '../components/Footer.astro';
-const {frontmatter} = Astro.props;
+import Nav from "../components/Nav.astro";
+import MainHead from "../components/MainHead.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
 ---
 
 <html>
   <head>
-    <MainHead title="Projects"/>
+    <MainHead title="Projects" />
     <!-- Add other Head elements here, like styles and meta tags. -->
     <title>{frontmatter.title}</title>
     <style>
@@ -19,15 +19,15 @@ const {frontmatter} = Astro.props;
       .toc-header {
         font-weight: bold;
       }
-      </style>
+    </style>
   </head>
   <body class="background">
     <Nav />
     <!-- Add other UI components here, like common headers and footers. -->
     <h1>{frontmatter.techstack}</h1>
-      <p class="toc-header">Summary:</p>
-      <!-- 2. Rendered HTML will be passed into the default slot. -->
-      <slot /> 
-      <Footer />
+    <p class="toc-header">Summary:</p>
+    <!-- 2. Rendered HTML will be passed into the default slot. -->
+    <slot />
+    <Footer />
   </body>
 </html>

@@ -1,0 +1,36 @@
+---
+import Nav from "../components/Nav.astro";
+import MainHead from "../components/MainHead.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
+---
+
+<head>
+    <MainHead title="Projects" />
+    <title>{frontmatter.title}</title>
+</head>
+<body class="background">
+    <Nav />
+    <div class="main">
+        <h1>{frontmatter.techstack}</h1>
+        <p class="blog-title">{frontmatter.title}</p>
+        <slot />
+    </div>
+    <Footer />
+</body>
+
+<style>
+    .background {
+        max-width: 1000px;
+        margin: auto;
+        justify-content: center;
+    }
+    .blog-title {
+        font-weight: bold;
+        text-align: center;
+    }
+    .main {
+        padding: 40px;
+        color: var(--t-subdue);
+    }
+</style>

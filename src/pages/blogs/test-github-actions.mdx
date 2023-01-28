@@ -1,0 +1,133 @@
+---
+layout: ../../layouts/blogsLayout.astro
+title: Testing CI docker push via github action locally
+--- 
+
+### Installs
+
+A tool called act makes this possible. It allows us to test run github actions locally. This can be useful for a quicker feedback loop than setting up a test github repository. Also in cases, setting up a testing repository may not be feasible i.e testing github organization or enterprise specigic things. Act won't let you test everything org specific but you can get pretty close
+
+
+### Getting started
+
+```sh
+
+    brew install act
+
+
+```
+
+### Setting up your app to be Dockerized
+
+Example simple flask app for example:
+
+mkdir app
+
+```sh
+
+    pip install flask
+
+
+```
+
+```python
+
+    from flask import Flask
+
+    app = Flask(__name__)
+
+
+    @app.route("/")
+    def hello_world():
+        return "Hello from flask"
+
+    if __name__ == "__main__":
+        app.run(debug=True)
+
+
+```
+
+
+```
+
+    pip freeze > requirements.txt
+
+
+```
+
+### Quick Dockerfile:
+
+```Dockerfile
+
+    FROM python:3.11.1-slim-buster
+
+    WORKDIR /src
+
+    COPY requirements.txt requirements.txt
+
+    RUN pip3 install -r requirements.txt
+
+    COPY . .
+
+    CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
+
+
+```
+
+
+Creating local docker registry or use the github container registry (ghcr)
+
+```sh
+
+    docker run -d -p 5001:5000 --restart=always --name registry registry:2
+
+
+```
+
+
+### Need a CI yaml file
+
+```yaml
+
+    name: Build and deploy new app image
+
+    on:
+        push:
+            branches:
+            - master
+
+    jobs:
+        push-app-image:
+            if: github.event_name == 'push'
+            name: push-app-image
+            runs-on: ubuntu-latest
+            steps:
+            - uses: actions/checkout@v3
+                with:
+                fetch-depth: 0
+            - run: echo "::set-output name=date::$(date +'%FT%H%M%SZ')"
+                id: date
+            - uses: docker/login-action@v1
+                with:
+                registry: local-registry
+                username:
+                password:
+            - uses: docker/build-push-action@v2
+                with:
+                context: .
+                push: true
+                tags: |
+                    localhost:5001/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
+                    localhost:5001/${{ github.event.repository.name }}:latest
+            - uses: docker/build-push-action@v2
+                with:
+                context: .
+                file: ./Another.Dockerfile
+                push: true
+                tags : |
+                    localhost:5001/${{ github.event.repository.name }}-admin:${{ steps.date.outputs.date }}
+                    localhost:5001/${{ github.event.repository.name }}-admin:latest
+
+
+```

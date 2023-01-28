@@ -1,18 +1,17 @@
 ---
 // Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import ProjectDisplay from '../components/ProjectDisplay.astro';
-import HolopinDisplay from '../components/holopinDisplay.astro';
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import ProjectDisplay from "../components/ProjectDisplay.astro";
+import HolopinDisplay from "../components/holopinDisplay.astro";
 
-const projects = await Astro.glob('../pages/projects/*.mdx');
+const projects = await Astro.glob("../pages/projects/*.mdx");
 ---
+
 <html lang="en">
 	<head>
-		<MainHead
-			title="Haffi Mazhar - Software Developer"
-		/>
+		<MainHead title="Haffi Mazhar - Software Developer" />
 		<style>
 			.wrapper {
 				margin-top: 2em;
@@ -56,7 +55,6 @@ const projects = await Astro.glob('../pages/projects/*.mdx');
 					grid-template-columns: 2fr 1fr;
 				}
 			}
-
 
 			.role {
 				font-weight: 900;
@@ -114,51 +112,57 @@ const projects = await Astro.glob('../pages/projects/*.mdx');
 				padding-bottom: 5%;
 			}
 
+			.awards-section-title {
+				padding-bottom: 10px;
+			}
 		</style>
 	</head>
 	<body class="background">
 		<Nav />
 		<header>
 			<div class="container">
-				<script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
-	
+				<script
+					src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"
+				></script>
+
 				<lottie-player
-						autoplay={ true }
-						loop={ true }
-						mode="normal"
-						speed="1"
-						src="https://assets2.lottiefiles.com/private_files/lf30_2oxijfub.json"
-						style="width: 320px"
-						>
+					autoplay={true}
+					loop={true}
+					mode="normal"
+					speed="1"
+					src="https://assets2.lottiefiles.com/private_files/lf30_2oxijfub.json"
+					style="width: 320px"
+				>
 				</lottie-player>
-	
+
 				<div class="name">
-					<h1 class="title">
-						Haffi Mazhar
-					</h1>
+					<h1 class="title">Haffi Mazhar</h1>
 				</div>
 			</div>
 		</header>
 		<main class="wrapper">
-				<div class="section">
-					<p class="bio">
-						I’m Haffi, a software developer with professional experience in backend along with a personal interest in frontend.
-					</p>
-				</div>
-				
-				<div class="holopin">
-					<h>Awards</h>
-					<HolopinDisplay />
-				</div>
-				
-				<div class="projects">
-					<h2>Projects</h2>
-					{projects.map(project =>
-							<div class="project-items">
-								<ProjectDisplay project={project} />
-							</div>
-						)}
-				</div>
+			<div class="section">
+				<p class="bio">
+					I’m Haffi, a software developer with professional experience
+					in backend along with a personal interest in frontend.
+				</p>
+			</div>
+
+			<div class="holopin">
+				<h class="awards-section-title">Awards</h>
+				<HolopinDisplay />
+			</div>
+
+			<div class="projects">
+				<h2>Projects</h2>
+				{
+					projects.map((project) => (
+						<div class="project-items">
+							<ProjectDisplay project={project} />
+						</div>
+					))
+				}
+			</div>
 		</main>
 		<Footer />
 	</body>

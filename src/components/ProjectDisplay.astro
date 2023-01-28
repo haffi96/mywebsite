@@ -1,52 +1,61 @@
 ---
 const { project } = Astro.props;
 ---
-<!-- <a href={project.url}> -->
+
 <a>
-    <button class="project-container">
-        <div class="metadata">
-            <p class="title">{project.title}</p>
-            <a class="stack">{project.frontmatter.techstack}</a>
-            <div class="links">
-                <a>Repo links:</a>
-                <a href={project.githublink1}>Frontend</a>
-                <a href={project.githublink2}>Backend</a>
+    <a>
+        <button class="project-container">
+            <div class="metadata">
+                <p class="title">{project.title}</p>
+                <div class="links">
+                    <a>{project.frontmatter.techstack}</a>
+                    <a href={project.githublink1}>Repo</a>
+                </div>
+                <a class="md-link" href={project.url}>
+                    <img
+                        class="preview"
+                        src={project.frontmatter.preview}
+                        alt="project preview"
+                    />
+                </a>
             </div>
-            <!-- <a class="md-link" href={project.url}>Read more...</a> -->
-            <img class="preview" src={project.frontmatter.preview} alt="project preview">
-        </div>
-    </button>
+        </button>
+    </a>
+
+    <style>
+        .project-container {
+            padding: 2%;
+            border: 5px solid pink;
+            border-radius: 5em;
+            text-align: center;
+            background: none;
+        }
+
+        .metadata {
+            display: flex;
+            flex-flow: column;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .stack {
+            font-size: small;
+            padding: 5%;
+        }
+
+        .preview {
+            border: 2px solid pink;
+            border-radius: 5em;
+        }
+
+        .md-link {
+            padding: 5%;
+        }
+
+        .links {
+            padding: 5px;
+        }
+    </style>
 </a>
-
-<style>
-    .project-container {
-        padding: 2%;
-        border: 5px solid pink;
-        border-radius: 5em;
-        text-align: center;
-        background: none;
-    }
-
-    .metadata {
-        display: flex;
-        flex-flow: column;
-    }
-
-    .title {
-        font-weight: bold;
-    }
-
-    .stack {
-        font-size: small;
-        padding: 5%;
-    }
-
-    .preview {
-        border: 2px solid pink;
-        border-radius: 5em;
-    }
-
-    .md-link {
-        padding: 5%;
-    }
-</style>
