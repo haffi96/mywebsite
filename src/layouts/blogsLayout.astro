@@ -9,27 +9,11 @@ const { frontmatter } = Astro.props;
     <MainHead title="Blogs" />
     <title>{frontmatter.title}</title>
 </head>
-<body class="background">
+<body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white">
     <Nav />
-    <div class="main">
-        <p class="blog-title">{frontmatter.title}</p>
+    <div class="px-20">
+        <p class="text-center font-bold">{frontmatter.title}</p>
         <slot />
     </div>
     <Footer />
 </body>
-
-<style>
-    .background {
-        max-width: 1000px;
-        margin: auto;
-        justify-content: center;
-    }
-    .blog-title {
-        font-weight: bold;
-        text-align: center;
-    }
-    .main {
-        padding: 40px;
-        color: var(--t-subdue);
-    }
-</style>

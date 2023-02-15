@@ -4,21 +4,21 @@ const { project } = Astro.props;
 
 <a>
     <a>
-        <button class="project-container">
-            <div class="metadata">
-                <p class="title">{project.title}</p>
+        <button class="rounded-3xl border border-zinc-400 p-5">
+            <div class="flex flex-col">
+                <p class="font-bold">{project.title}</p>
                 {
                     project.frontmatter.site ? (
                         <a href={project.frontmatter.site}>Demo site</a>
                     ) : null
                 }
-                <div class="links">
+                <div class="p-3">
                     <a>{project.frontmatter.techstack}</a>
                     <a href={project.githublink1}>Repo</a>
                 </div>
-                <a class="md-link" href={project.url}>
+                <a class="p-3" href={project.url}>
                     <img
-                        class="preview"
+                        class="rounded-3xl"
                         src={project.frontmatter.preview}
                         alt="project preview"
                     />
@@ -26,41 +26,4 @@ const { project } = Astro.props;
             </div>
         </button>
     </a>
-
-    <style>
-        .project-container {
-            padding: 2%;
-            border: 5px solid pink;
-            border-radius: 5em;
-            text-align: center;
-            background: none;
-        }
-
-        .metadata {
-            display: flex;
-            flex-flow: column;
-        }
-
-        .title {
-            font-weight: bold;
-        }
-
-        .stack {
-            font-size: small;
-            padding: 5%;
-        }
-
-        .preview {
-            border: 2px solid pink;
-            border-radius: 5em;
-        }
-
-        .md-link {
-            padding: 5%;
-        }
-
-        .links {
-            padding: 5px;
-        }
-    </style>
 </a>

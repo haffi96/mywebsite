@@ -9,14 +9,14 @@ const blogs = await Astro.glob("../pages/blogs/*.mdx");
 <head>
 	<MainHead title="Learning logs" />
 </head>
-<body class="background">
+<body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white">
 	<Nav />
-	<div class="content-wrapper">
-		<h2 class="page-title">What I'm learning about</h2>
-		<div class="blogs">
+	<div class="my-2 p-10 text-center">
+		<h2 class="text-lg italic font-bold">What I'm learning about</h2>
+		<div class="pt-10">
 			{
 				blogs.map((blog) => (
-					<li class="blog-links">
+					<li class="p-2 underline text-black dark:text-zinc-300">
 						<a href={blog.url}>{blog.frontmatter.title}</a>
 					</li>
 				))
@@ -25,22 +25,3 @@ const blogs = await Astro.glob("../pages/blogs/*.mdx");
 	</div>
 	<Footer />
 </body>
-
-<style>
-	.content-wrapper {
-		margin-top: 2em;
-		margin-bottom: 2em;
-		color: var(--t-subdue);
-		padding: 40px;
-		text-align: center;
-	}
-	.background {
-		background-color: #222742;
-	}
-	.blogs {
-		padding-top: 20px;
-	}
-	.blog-links {
-		padding: 3px;
-	}
-</style>

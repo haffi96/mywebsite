@@ -9,21 +9,13 @@ const { frontmatter } = Astro.props;
   <head>
     <MainHead title="Projects" />
     <title>{frontmatter.title}</title>
-    <style>
-      .background {
-        max-width: 1000px;
-        margin: auto;
-        justify-content: center;
-      }
-      .toc-header {
-        font-weight: bold;
-      }
-    </style>
   </head>
-  <body class="background">
+  <body
+    class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white text-center"
+  >
     <Nav />
     <h1>{frontmatter.techstack}</h1>
-    <p class="toc-header">Summary:</p>
+    <p class="font-bold">Summary:</p>
     <slot />
     <Footer />
   </body>
