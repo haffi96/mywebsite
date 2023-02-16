@@ -3,17 +3,21 @@ layout: ../../layouts/blogsLayout.astro
 title: Testing CI docker push via github action locally
 --- 
 
-### Installs
+`Intro`
+
+----
 
 A tool called [act](https://github.com/nektos/act) makes this possible. It allows us to test run github actions locally. This can be useful for a quicker feedback loop than setting up a test github repository. Also in cases, setting up a testing repository may not be feasible i.e testing github organization or enterprise specigic things. Act won't let you test everything org specific but you can get pretty close
 
+<br />
+`Getting started`
 
-### Getting started
+----
 
 Pre-requisites:
-  - [Docker](https://www.docker.com/products/docker-desktop/)
-  - [act](https://github.com/nektos/act)
-
+<li class="underline"> [Docker](https://www.docker.com/products/docker-desktop/) </li>
+<li class="underline">[act](https://github.com/nektos/act)</li>
+<br />
 
 ```sh
 
@@ -21,12 +25,15 @@ Pre-requisites:
 
 
 ```
+<br />
 
-### Setting up your app to be Dockerized
+`Setting up your app to be Dockerized`
 
-Example simple flask app for example:
+---
 
-mkdir app
+To create a simple flask app for example (This can be anything):
+
+Create a new directory and create a file in it i.e app.py
 
 ```sh
 
@@ -60,7 +67,11 @@ mkdir app
 
 ```
 
-### Quick Dockerfile:
+<br />
+
+`Quick Dockerfile`
+
+----
 
 ```Dockerfile
 

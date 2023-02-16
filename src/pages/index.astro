@@ -5,6 +5,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import ProjectDisplay from "../components/ProjectDisplay.astro";
 import HolopinDisplay from "../components/holopinDisplay.astro";
+import Intro from "../components/Intro.astro";
 
 const projects = await Astro.glob("../pages/projects/*.mdx");
 ---
@@ -13,46 +14,30 @@ const projects = await Astro.glob("../pages/projects/*.mdx");
 	<head>
 		<MainHead title="Haffi Mazhar - Software Developer" />
 	</head>
-	<body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white">
+	<body
+		class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono"
+	>
 		<Nav />
 		<header>
-			<div class="flex flex-col justify-center items-center">
-				<script
-					src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"
-				></script>
-
-				<div class="flex flex-col justify-center pt-5 space-y-2">
-					<h1 class="text-xl text-center">Haffi Mazhar</h1>
-					<div class="flex justify-center">
-						haffimazhar96@gmail.com | 07445980261
-					</div>
-				</div>
-				<lottie-player
-					autoplay={true}
-					loop={true}
-					mode="normal"
-					speed="1"
-					src="https://assets2.lottiefiles.com/private_files/lf30_2oxijfub.json"
-					class="w-1/3"
-				>
-				</lottie-player>
+			<div class="flex flex-col pt-5 space-y-2 w-1/2 m-auto items-center">
+				<img
+					src="/media/avatar.JPG"
+					alt="avatar.png"
+					class="w-40 h-35 rounded-full"
+				/>
+				<h1 class="text-3xl">Haffi Mazhar :)</h1>
+				<div class="">haffimazhar96@gmail.com | 07445980261</div>
+				<Intro />
 			</div>
 		</header>
 		<main class="my-2">
-			<div class="text-lg m-auto justify-center flex w-1/2 pb-10">
-				<p>
-					I’m Haffi, a software developer with professional experience
-					in backend along with a personal interest in frontend.
-				</p>
-			</div>
-
 			<HolopinDisplay />
 
 			<div class="flex flex-col text-center pt-10 space-y-10">
 				<h2>Projects</h2>
 				{
 					projects.map((project) => (
-						<div>
+						<div class="px-5">
 							<ProjectDisplay project={project} />
 						</div>
 					))

@@ -1,19 +1,31 @@
 ---
 layout: ../../layouts/blogsLayout.astro
 title: Supabase - Increment or insert column value with postgres functions
---- 
+---
 
-### Intro
+<br />
+
+`Intro`
+
+----
 
 Looking for a quick way to increment a value in a supabase table?
 
-### Supabase functions
+
+<br />
+`Supabase functions`
+
+----
 
 The supabase sdk allows you to do a range of things with the table however it doesn't let you execute custom sql. However, it does let you trigger postgres function with the rpc method https://supabase.com/docs/reference/javascript/rpc
 
 We can combine this with postgres function that can update a table field of choice to easily increment values
 
-### Example
+<br />
+
+`Example`
+
+----
 
 You have a table `metric` like this:
 
@@ -25,7 +37,11 @@ You have a table `metric` like this:
 
 and you want to simply increment a column from a backend call
 
-### We can define a postgres function which takes a user_id and the field/column you want to increment
+<br />
+
+`We can define a postgres function which takes a user_id and the field/column you want to increment`
+
+<br />
 
 ``` sql
 

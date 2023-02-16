@@ -4,7 +4,7 @@ const { project } = Astro.props;
 
 <a>
     <a>
-        <button class="rounded-3xl border border-zinc-400 p-5">
+        <button class="rounded-3xl border border-zinc-400 p-3">
             <div class="flex flex-col">
                 <p class="font-bold">{project.title}</p>
                 {
@@ -14,9 +14,9 @@ const { project } = Astro.props;
                 }
                 <div class="p-3">
                     <a>{project.frontmatter.techstack}</a>
-                    <a href={project.githublink1}>Repo</a>
+                    <a class="underline" href={project.githublink1}>Repo</a>
                 </div>
-                <a class="p-3" href={project.url}>
+                <a href={project.url}>
                     <img
                         class="rounded-3xl"
                         src={project.frontmatter.preview}

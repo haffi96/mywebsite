@@ -8,14 +8,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  markdown: {
-    extendDefaultPlugins: true
-    // rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", {
-    //   behavior: "append"
-    // }], ["rehype-toc", {
-    //   headings: ["h1", "h2", "h3"]
-    // }]],
-  },
-
-  integrations: [mdx(), tailwind()]
+  markdown: {},
+  integrations: [mdx({
+    gfm: true
+  }), tailwind()]
 });
