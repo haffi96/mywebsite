@@ -1,13 +1,9 @@
 ---
-// Component Imports
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import ProjectDisplay from "../components/ProjectDisplay.astro";
 import HolopinDisplay from "../components/holopinDisplay.astro";
 import Intro from "../components/Intro.astro";
-
-const projects = await Astro.glob("../pages/projects/*.mdx");
 ---
 
 <html lang="en">
@@ -32,17 +28,6 @@ const projects = await Astro.glob("../pages/projects/*.mdx");
 		</header>
 		<main class="my-2">
 			<HolopinDisplay />
-
-			<div class="flex flex-col text-center pt-10 space-y-10">
-				<h2>Projects</h2>
-				{
-					projects.map((project) => (
-						<div class="px-5">
-							<ProjectDisplay project={project} />
-						</div>
-					))
-				}
-			</div>
 		</main>
 		<Footer />
 	</body>
