@@ -3,8 +3,10 @@ import MainHead from "../../components/MainHead.astro";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import ProjectDisplay from "../../components/ProjectDisplay.astro";
+import { log } from "astro/dist/core/logger/core";
 
 const projects = await Astro.glob("./*.mdx");
+projects.sort((a, b) => a.frontmatter.rank - b.frontmatter.rank);
 ---
 
 <head>
