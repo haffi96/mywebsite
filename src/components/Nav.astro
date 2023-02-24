@@ -24,15 +24,19 @@ import ThemeToggle from "./ThemeToggle";
 	window.localStorage.setItem("theme", theme);
 </script>
 
-<nav class="flex items-center justify-center p-10 space-x-5">
-	<a class="uppercase hover:text-zinc-400" href="/">Home</a>
-	<a class="uppercase hover:text-zinc-400" href="/projects">Projects</a>
-	<a class="uppercase hover:text-zinc-400" href="/blogs">Blogs</a>
-	<a class="uppercase hover:text-zinc-400" href="/media/resume.pdf">
-		Resume</a
+<nav class="flex flex-col items-center justify-center mt-10 text-center">
+	<div
+		class="flex flex-col sm:flex-row md:flex-row lg:flex-row lg:space-x-5 sm:space-x-5 md:space-x-5"
 	>
+		<a class="uppercase hover:text-zinc-400" href="/">Home</a>
+		<a class="uppercase hover:text-zinc-400" href="/projects">Projects</a>
+		<a class="uppercase hover:text-zinc-400" href="/blogs">Blogs</a>
+		<a class="uppercase hover:text-zinc-400" href="/media/resume.pdf">
+			Resume</a
+		>
+	</div>
 	<br />
-	<div class="flex space-x-3">
+	<div class="flex flex-row space-x-5">
 		<a href="https://uk.linkedin.com/in/haffi-mazhar-a59818154">
 			<svg
 				class="block w-5 h-5 dark:fill-white"
@@ -55,6 +59,6 @@ import ThemeToggle from "./ThemeToggle";
 				></path>
 			</svg>
 		</a>
-		<ThemeToggle client:load />
 	</div>
+	<ThemeToggle client:load />
 </nav>
