@@ -1,3 +1,29 @@
+---
+import ThemeToggle from "./ThemeToggle";
+---
+
+<script is:inline>
+	const theme = (() => {
+		if (
+			typeof localStorage !== "undefined" &&
+			localStorage.getItem("theme")
+		) {
+			return localStorage.getItem("theme");
+		}
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+			return "dark";
+		}
+		return "light";
+	})();
+
+	if (theme === "light") {
+		document.documentElement.classList.remove("dark");
+	} else {
+		document.documentElement.classList.add("dark");
+	}
+	window.localStorage.setItem("theme", theme);
+</script>
+
 <nav class="flex items-center justify-center p-10 space-x-5">
 	<a class="uppercase hover:text-zinc-400" href="/">Home</a>
 	<a class="uppercase hover:text-zinc-400" href="/projects">Projects</a>
@@ -29,5 +55,6 @@
 				></path>
 			</svg>
 		</a>
+		<ThemeToggle client:load />
 	</div>
 </nav>

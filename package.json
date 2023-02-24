@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.12.2",
+    "@astrojs/preact": "^2.0.3",
     "@astrojs/tailwind": "^3.0.1",
     "astro": "^2.0.12",
+    "preact": "^10.12.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "rehype-toc": "^3.0.2",

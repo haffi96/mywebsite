@@ -1,15 +1,18 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
+// Plugins
 import mdx from "@astrojs/mdx";
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
+import preact from "@astrojs/preact";
+
 
 // https://astro.build/config
 export default defineConfig({
   markdown: {},
-  integrations: [mdx({
-    gfm: true
-  }), tailwind()]
+  server: { port: 8000 },
+  integrations: [
+    mdx({ gfm: true }),
+    tailwind(),
+    preact({ compat: true })
+  ]
 });
