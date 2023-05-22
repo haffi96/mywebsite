@@ -2,21 +2,21 @@
 layout: ../../layouts/blogsLayout.astro
 title: Supabase - Increment or insert column value with postgres functions
 rank: 2
+category: database
 ---
 
 <br />
 
 `Intro`
 
-----
+---
 
 Looking for a quick way to increment a value in a supabase table?
-
 
 <br />
 `Supabase functions`
 
-----
+---
 
 The supabase sdk allows you to do a range of things with the table however it doesn't let you execute custom sql. However, it does let you trigger postgres function with the rpc method https://supabase.com/docs/reference/javascript/rpc
 
@@ -26,7 +26,7 @@ We can combine this with postgres function that can update a table field of choi
 
 `Example`
 
-----
+---
 
 You have a table `metric` like this:
 
@@ -34,7 +34,6 @@ You have a table `metric` like this:
 | --- | ------- | ------- | ------- |
 | 1   | 1       | 0       | 0       |
 | 2   | 2       | 0       | 0       |
-
 
 and you want to simply increment a column from a backend call
 
@@ -44,7 +43,7 @@ and you want to simply increment a column from a backend call
 
 <br />
 
-``` sql
+```sql
 
     CREATE OR REPLACE FUNCTION increment(user_id_to_inc INT, field_name TEXT)
     RETURNS VOID AS
@@ -62,7 +61,6 @@ and you want to simply increment a column from a backend call
 
 Note: There needs to be unique constraint on user_id and any field name that you want to increment must have a default of 0
 
-
 ### Supabase SQL editor
 
 We need to add the postgres function into the supabase dashboard
@@ -71,26 +69,26 @@ We need to add the postgres function into the supabase dashboard
 
 <img src="/media/supabase_1.png" alt="" width="250" height="300" />
 
-
 #### Create a new query, copy in the function and run query
 
-
 <img src="/media/supabase_2.png" alt="" width="600" height="500" />
-
 
 ### We can now call this function from our application
 
 Here is an example of invoking the postgres from typescript using the supabase sdk
 
 ```typescript
-
-    export async function incrementCountForUser(userID: number, count_field: string) {
-        const field_to_increment = `count_${count_field}`  // count_a or count_b
-        const { data, error } = await supabaseBrowser.rpc('increment', { user_id_to_inc: userID, field_name: field_to_increment })
-        if (error) {
-            console.log(error);
-        }
-    }
-
-
+export async function incrementCountForUser(
+  userID: number,
+  count_field: string
+) {
+  const field_to_increment = `count_${count_field}`; // count_a or count_b
+  const { data, error } = await supabaseBrowser.rpc("increment", {
+    user_id_to_inc: userID,
+    field_name: field_to_increment,
+  });
+  if (error) {
+    console.log(error);
+  }
+}
 ```
