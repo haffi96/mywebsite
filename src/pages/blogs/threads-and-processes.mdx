@@ -1,0 +1,66 @@
+---
+layout: ../../layouts/blogsLayout.astro
+title: Threads and Processes
+rank: 3
+---
+
+### Intro
+
+To fully understand how our backend applications compete for CPU resources and how to effectively configure them to utilize
+available resources. We need to understand the fundamentals of what a process is, what a thead is and how they differ
+
+<br />
+
+### What is a Process?
+```
+- A set of instructions
+- Has isolated memory
+- Each process has a PID allocated to it by the kernel
+- Scheduled in the CPU
+```
+
+Example of a process:
+<img src="/media/ps-aux.png" alt="" width="500" height="300" />
+
+Here is the process for which is serving the node app with cli args - "npm run dev"  and has an allocated
+PID of 21260
+
+<br />
+
+### What is a thread?
+```
+- In Linux, a thread is a 'light weight process (LWP)'
+- A set of instructions
+- Shares memory with parent process - A key difference
+- Has a ID
+- Scheduled in the CPU
+```
+
+<br />
+
+## Different ways of utilizing theads and process
+
+### Single threaded applications
+
+NodeJS is a single threads process, in general.
+
+```
+This means,
+- One process with a single thread
+- Simple
+- If you have pending jobs/requests, they are blocked until the single thread becomes available
+```
+<br />
+
+### Multi-process applications
+
+Nginx is a multi-process application. Postgres is another example.
+
+```
+This means,
+- App has multiple processes
+- Each has it's own memory
+- Takes advantage of multi-cores
+```
+
+<img src="/media/nginx-architecture.png" alt="" width="500" height="300" />
