@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/blogsLayout.astro
 title: Threads and Processes
-rank: 3
+rank: 1
+category: general
 ---
 
 ### Intro
@@ -12,29 +13,39 @@ available resources. We need to understand the fundamentals of what a process is
 <br />
 
 ### What is a Process?
+
 ```
 - A set of instructions
-- Has isolated memory
+- Has isolated memory. One process cannot corrupt memory of another process
 - Each process has a PID allocated to it by the kernel
 - Scheduled in the CPU
 ```
 
 Example of a process:
+
 <img src="/media/ps-aux.png" alt="" width="500" height="300" />
 
-Here is the process for which is serving the node app with cli args - "npm run dev"  and has an allocated
+Here is the process for which is serving the node app with cli args - "npm run dev" and has an allocated
 PID of 21260
 
 <br />
 
 ### What is a thread?
+
 ```
+- A unit of execution within a process. A process has atleast one thread.
 - In Linux, a thread is a 'light weight process (LWP)'
 - A set of instructions
 - Shares memory with parent process - A key difference
 - Has a ID
 - Scheduled in the CPU
 ```
+
+<br />
+
+A general diagram of a process
+
+<img src="/media/threads-process.png" alt="" width="500" height="300" />
 
 <br />
 
@@ -50,6 +61,7 @@ This means,
 - Simple
 - If you have pending jobs/requests, they are blocked until the single thread becomes available
 ```
+
 <br />
 
 ### Multi-process applications
@@ -60,7 +72,36 @@ Nginx is a multi-process application. Postgres is another example.
 This means,
 - App has multiple processes
 - Each has it's own memory
-- Takes advantage of multi-cores
+- Takes advantage of multi-cores. Rule of thumb --> # cores == # Processes
 ```
 
 <img src="/media/nginx-architecture.png" alt="" width="500" height="300" />
+
+<br />
+
+### Multi-threaded applications
+
+```
+This means,
+- One process, multiple threads
+- Shared memory (the threads compete for memory)
+- Requires less memory than multi-processing in general.
+- Prone to race conditions. Often need to lock memory (mutex).
+```
+
+<br />
+
+## How does the operating system run a thread or process on a CPU?
+
+**Context Swtiching**
+
+- Process context swtiching is when the OS's sheduler saves the state of a running process, switces
+  to another process. Then going back the initial process and resuming from the saved state. Process context swtiching is expensive, it involves saving and loading of registers, switching out memory pages, updating various kernel data
+  structures
+
+<br />
+
+- Thread context switching is when the CPU saves the state of a thread and
+  switches to another thread of the same process. Thread context switching is less
+  expensive. There are fewer states to keep track of and since threads share the same
+  memory space, there is no need to switch out virtual memory pages.

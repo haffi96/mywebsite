@@ -2,6 +2,7 @@
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import BlogView from "../components/BlogView";
 
 const blogs = await Astro.glob("../pages/blogs/*.mdx");
 
@@ -14,17 +15,6 @@ blogs.sort((a, b) => (a.frontmatter.rank < b.frontmatter.rank ? -1 : 1));
 </head>
 <body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono">
 	<Nav />
-	<div class="my-2 p-10 text-center">
-		<h2 class="text-lg italic font-bold">What I'm learning about</h2>
-		<div class="pt-10">
-			{
-				blogs.map((blog) => (
-					<li class="p-2 underline text-black dark:text-zinc-300">
-						<a href={blog.url}>{blog.frontmatter.title}</a>
-					</li>
-				))
-			}
-		</div>
-	</div>
+	<BlogView client:load blogs={blogs} />
 	<Footer />
 </body>

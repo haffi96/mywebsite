@@ -1,22 +1,27 @@
 ---
 layout: ../../layouts/blogsLayout.astro
 title: Testing CI docker push via github action locally
-rank: 1
---- 
+rank: 3
+category: general
+---
 
 `Intro`
 
-----
+---
 
 A tool called [act](https://github.com/nektos/act) makes this possible. It allows us to test run github actions locally. This can be useful for a quicker feedback loop than setting up a test github repository. Also in cases, setting up a testing repository may not be feasible i.e testing github organization or enterprise specigic things. Act won't let you test everything org specific but you can get pretty close
 
 <br />
 `Getting started`
 
-----
+---
 
 Pre-requisites:
-<li class="underline"> [Docker](https://www.docker.com/products/docker-desktop/) </li>
+
+<li class="underline">
+  {" "}
+  [Docker](https://www.docker.com/products/docker-desktop/){" "}
+</li>
 <li class="underline">[act](https://github.com/nektos/act)</li>
 <br />
 
@@ -26,6 +31,7 @@ Pre-requisites:
 
 
 ```
+
 <br />
 
 `Setting up your app to be Dockerized`
@@ -60,7 +66,6 @@ Create a new directory and create a file in it i.e app.py
 
 ```
 
-
 ```
 
     pip freeze > requirements.txt
@@ -72,7 +77,7 @@ Create a new directory and create a file in it i.e app.py
 
 `Quick Dockerfile`
 
-----
+---
 
 ```shell
 
@@ -92,7 +97,6 @@ Create a new directory and create a file in it i.e app.py
 
 ```
 
-
 Creating local docker registry or use the github container registry (ghcr)
 
 ```sh
@@ -101,7 +105,6 @@ Creating local docker registry or use the github container registry (ghcr)
 
 
 ```
-
 
 Now we need a file to define the structure of our github ci action
 
@@ -170,7 +173,6 @@ So, the folder structure should now look like this:
 
 ```
 
-
 Now we can run the github action with act:
 
 ```sh
@@ -179,6 +181,5 @@ Now we can run the github action with act:
 
 
 ```
-
 
 Note: You'll need to add `--container-architecture linux/amd64` if you're on M1 Mac
