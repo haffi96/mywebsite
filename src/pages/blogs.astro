@@ -4,6 +4,9 @@ import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
 const blogs = await Astro.glob("../pages/blogs/*.mdx");
+
+// Sort blogs by ranks
+blogs.sort((a, b) => (a.frontmatter.rank < b.frontmatter.rank ? -1 : 1));
 ---
 
 <head>
