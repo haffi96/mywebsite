@@ -7,14 +7,20 @@ import BlogView from "../components/BlogView";
 const blogs = await Astro.glob("../pages/blogs/*.mdx");
 
 // Sort blogs by ranks
-blogs.sort((a, b) => (a.frontmatter.rank < b.frontmatter.rank ? -1 : 1));
+blogs.sort((a, b) => (a.frontmatter.rank < b.frontmatter.rank ? 1 : -1));
+
+const preFilteredBlogs = blogs.filter((blog) => {
+  if (!blog.frontmatter.ignore) {
+    return blog;
+  }
+});
 ---
 
 <head>
-	<MainHead title="Learning logs" />
+  <MainHead title="Learning logs" />
 </head>
 <body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono">
-	<Nav />
-	<BlogView client:load blogs={blogs} />
-	<Footer />
+  <Nav />
+  <BlogView client:load blogs={preFilteredBlogs} />
+  <Footer />
 </body>
