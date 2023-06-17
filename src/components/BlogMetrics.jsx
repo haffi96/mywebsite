@@ -9,7 +9,7 @@ export default function BlogMetrics(props) {
 
   const [like_count, setLikes] = useState(0);
   const [view_count, setViews] = useState(0);
-  const [blogId, setBlogId] = useState("");
+  const [blogId, setBlogId] = useState();
 
   const incrementLikesForBlogId = async (new_like_count) => {
     await pb_client.collection("blog").update(blogId, {
@@ -49,12 +49,14 @@ export default function BlogMetrics(props) {
       setLikes(record.items[0].likes);
       setViews(record.items[0].views);
     }
-    //
 
-    const new_view_count = view_count + 1;
-    await incrementViewsForBlogId(new_view_count);
-    setViews(new_view_count);
-  }, []);
+    // Increment only when blogId present
+    if (blogId) {
+      const new_view_count = view_count + 1;
+      await incrementViewsForBlogId(new_view_count);
+      setViews(new_view_count);
+    }
+  }, [blogId]);
   return (
     <div class="flex my-2 w-auto space-x-5">
       <div class="flex flex-row space-x-1">
