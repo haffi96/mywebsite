@@ -14,6 +14,9 @@ const preFilteredBlogs = blogs.filter((blog) => {
     return blog;
   }
 });
+
+// Demo mode check
+const DEMO = import.meta.env.DEMO === "true";
 ---
 
 <head>
@@ -21,6 +24,6 @@ const preFilteredBlogs = blogs.filter((blog) => {
 </head>
 <body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono">
   <Nav />
-  <BlogView client:load blogs={preFilteredBlogs} />
+  <BlogView client:load blogs={DEMO ? blogs : preFilteredBlogs} />
   <Footer />
 </body>

@@ -16,9 +16,5 @@
   "files.associations": {
     "*.mdx": "markdown"
   },
-  "cSpell.words": [
-    "astro",
-    "Preorder",
-    "RDBMS"
-  ]
+  "cSpell.words": ["astro", "Preorder", "RDBMS"]
 }
