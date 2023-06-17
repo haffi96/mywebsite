@@ -3,36 +3,16 @@ import Nav from "../components/Nav.astro";
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer.astro";
 import BlogMetrics from "../components/BlogMetrics";
-import PocketBase from "pocketbase";
 
 const { frontmatter } = Astro.props;
 
 // Initialize blog data
-
 const blog_data = {
   slug: frontmatter.slug,
-  likes: 0,
-  views: 0,
 };
 
-// query db
+// get db url
 const pb_url = import.meta.env.PB_URL;
-
-const pb_client = new PocketBase(pb_url);
-
-const record = await pb_client
-  .collection("blog")
-  .getList(1, 1, { filter: `slug='${frontmatter.slug}'` });
-
-if (record.items.length === 0) {
-  // Create record
-  const new_record = await pb_client.collection("blog").create(blog_data);
-  blog_data.blog_id = new_record.id;
-} else {
-  blog_data.blog_id = record.items[0].id;
-  blog_data.likes = record.items[0].likes;
-  blog_data.views = record.items[0].views;
-}
 ---
 
 <head>

@@ -2,22 +2,23 @@ import { useEffect, useState } from "preact/hooks";
 import PocketBase from "pocketbase";
 
 export default function BlogMetrics(props) {
-  const { _, likes, views, blog_id } = props.blog_data;
+  const { slug } = props.blog_data;
   const pb_url = props.pb_url;
 
   const pb_client = new PocketBase(pb_url);
 
-  const [like_count, setLikes] = useState(likes);
-  const [view_count, setViews] = useState(views);
+  const [like_count, setLikes] = useState(0);
+  const [view_count, setViews] = useState(0);
+  const [blogId, setBlogId] = useState("");
 
   const incrementLikesForBlogId = async (new_like_count) => {
-    await pb_client.collection("blog").update(blog_id, {
+    await pb_client.collection("blog").update(blogId, {
       likes: new_like_count,
     });
   };
 
   const incrementViewsForBlogId = async (new_view_count) => {
-    await pb_client.collection("blog").update(blog_id, {
+    await pb_client.collection("blog").update(blogId, {
       views: new_view_count,
     });
   };
@@ -29,6 +30,27 @@ export default function BlogMetrics(props) {
   };
 
   useEffect(async () => {
+    // Try to fetch record
+    const record = await pb_client
+      .collection("blog")
+      .getList(1, 1, { filter: `slug='${slug}'` });
+
+    if (record.items.length === 0) {
+      // Create record
+      blog_data = {
+        slug: slug,
+        likes: like_count,
+        view_count: view_count,
+      };
+      const new_record = await pb_client.collection("blog").create(blog_data);
+      setBlogId(new_record.id);
+    } else {
+      setBlogId(record.items[0].id);
+      setLikes(record.items[0].likes);
+      setViews(record.items[0].views);
+    }
+    //
+
     const new_view_count = view_count + 1;
     await incrementViewsForBlogId(new_view_count);
     setViews(new_view_count);
