@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
 
 // Initialize blog data
 const blog_data = {
-  slug: frontmatter.slug,
+    slug: frontmatter.slug,
 };
 
 // get db url
@@ -16,15 +16,15 @@ const pb_url = import.meta.env.PB_URL;
 ---
 
 <head>
-  <MainHead title={frontmatter.title} />
-  <title>{frontmatter.title}</title>
+    <MainHead title={frontmatter.title} />
+    <title>{frontmatter.title}</title>
 </head>
 <body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white">
-  <Nav />
-  <div class="px-8 md:px-20 lg:px-30 xl:px-70 2xl:px-80">
-    <BlogMetrics client:load blog_data={blog_data} pb_url={pb_url} />
-    <p class="text-center font-bold">{frontmatter.title}</p>
-    <slot />
-  </div>
-  <Footer />
+    <Nav />
+    <div class="px-8 md:px-20 lg:px-30 xl:px-70 2xl:px-80">
+        <BlogMetrics client:load blog_data={blog_data} pb_url={pb_url} />
+        <p class="text-center font-bold">{frontmatter.title}</p>
+        <slot />
+    </div>
+    <Footer />
 </body>

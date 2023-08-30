@@ -3,29 +3,29 @@ const { project } = Astro.props;
 ---
 
 <a>
-  <a>
-    <button class="rounded-3xl border border-zinc-400 p-3">
-      <div class="flex flex-col">
-        <p class="font-bold">{project.title}</p>
-        {
-          project.frontmatter.site ? (
-            <a class="underline" href={project.frontmatter.site}>
-              Demo site
-            </a>
-          ) : null
-        }
-        <div class="p-3">
-          <a>{project.frontmatter.techstack}</a>
-          <a class="underline" href={project.githublink1}>Repo</a>
-        </div>
-        <a href={project.url}>
-          <img
-            class="rounded-3xl"
-            src={project.frontmatter.preview}
-            alt="project preview"
-          />
-        </a>
-      </div>
-    </button>
-  </a>
+    <a>
+        <button class="rounded-3xl border border-zinc-400 p-3">
+            <div class="flex flex-col">
+                <p class="font-bold">{project.title}</p>
+                {
+                    project.frontmatter.site ? (
+                        <a class="underline" href={project.frontmatter.site}>
+                            Demo site
+                        </a>
+                    ) : null
+                }
+                <div class="p-3">
+                    <a>{project.frontmatter.techstack}</a>
+                    <a class="underline" href={project.githublink1}>Repo</a>
+                </div>
+                <a href={project.url}>
+                    <img
+                        class="rounded-3xl"
+                        src={project.frontmatter.preview}
+                        alt="project preview"
+                    />
+                </a>
+            </div>
+        </button>
+    </a>
 </a>

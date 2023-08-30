@@ -6,17 +6,17 @@ const { frontmatter } = Astro.props;
 ---
 
 <html>
-  <head>
-    <MainHead title="Projects" />
-    <title>{frontmatter.title}</title>
-  </head>
-  <body
-    class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white text-center"
-  >
-    <Nav />
-    <h1>{frontmatter.techstack}</h1>
-    <p class="font-bold">Summary:</p>
-    <slot />
-    <Footer />
-  </body>
+    <head>
+        <MainHead title="Projects" />
+        <title>{frontmatter.title}</title>
+    </head>
+    <body
+        class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white text-center"
+    >
+        <Nav />
+        <h1>{frontmatter.techstack}</h1>
+        <p class="font-bold">Summary:</p>
+        <slot />
+        <Footer />
+    </body>
 </html>
