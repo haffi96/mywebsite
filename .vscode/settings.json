@@ -18,9 +18,13 @@
     "files.associations": {
         "*.mdx": "markdown"
     },
-    "cSpell.words": [
+    "emmet.includeLanguages": {
+        "markdown": "html",
+        "mdx": "html"
+    },
+    "auto-close-tag.activationOnLanguage": [
+        "mdx",
         "astro",
-        "Preorder",
-        "RDBMS"
+        "markdown"
     ]
 }

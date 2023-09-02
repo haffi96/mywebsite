@@ -3,12 +3,14 @@ const {
     title = "Haffi Mazhar",
     description = "The personal site of Haffi Mazhar",
 } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <meta charset="UTF-8" />
 <meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
+<ViewTransitions />
 <title>{title}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -22,3 +22,5 @@ pnpm-debug.log*
 pb_data
 pocketbase
 pocket
+
+creds.txt

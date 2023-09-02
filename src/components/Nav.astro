@@ -31,7 +31,7 @@ window.localStorage.setItem("theme", theme);
         <a class="uppercase hover:text-zinc-400" href="/">Home</a>
         <a class="uppercase hover:text-zinc-400" href="/projects">Projects</a>
         <a class="uppercase hover:text-zinc-400" href="/blogs">Blogs</a>
-        <a class="uppercase hover:text-zinc-400" href="/media/resume.pdf">
+        <a class="uppercase hover:text-zinc-400" href="/resume.pdf" data-astro-reload>
             Resume</a
         >
     </div>
@@ -60,5 +60,5 @@ window.localStorage.setItem("theme", theme);
             </svg>
         </a>
     </div>
-    <ThemeToggle client:load />
+    <ThemeToggle client:only />
 </nav>

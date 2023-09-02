@@ -1,16 +1,18 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
-import BlogView from "../components/BlogView";
+import MainHead from "@components/MainHead.astro";
+import Footer from "@components/Footer.astro";
+import Nav from "@components/Nav.astro";
+import BlogView from "@components/BlogView";
+import { getCollection } from 'astro:content';
 
-const blogs = await Astro.glob("../pages/blogs/*.mdx");
+// const blogs = await Astro.glob("../pages/blogs/*.mdx");
+const blogs = await getCollection("blogs");
 
 // Sort blogs by ranks
-blogs.sort((a, b) => (a.frontmatter.rank < b.frontmatter.rank ? 1 : -1));
+blogs.sort((a, b) => (a.data.rank < b.data.rank ? 1 : -1));
 
 const preFilteredBlogs = blogs.filter((blog) => {
-    if (!blog.frontmatter.ignore) {
+    if (!blog.data.ignore) {
         return blog;
     }
 });
@@ -24,6 +26,6 @@ const DEMO = import.meta.env.DEMO === "true";
 </head>
 <body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono">
     <Nav />
-    <BlogView client:load blogs={DEMO ? blogs : preFilteredBlogs} />
+    <BlogView client:only allBlogs={DEMO ? blogs : preFilteredBlogs} />
     <Footer />
 </body>

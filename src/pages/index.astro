@@ -1,9 +1,11 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
-import HolopinDisplay from "../components/holopinDisplay.astro";
-import Intro from "../components/Intro.astro";
+import MainHead from "@components/MainHead.astro";
+import Nav from "@components/Nav.astro";
+import Footer from "@components/Footer.astro";
+import HolopinDisplay from "@components/holopinDisplay.astro";
+import Intro from "@components/Intro.astro";
+import { Image } from "astro:assets";
+import displayPic from "@media/avatar.png"
 ---
 
 <html lang="en">
@@ -16,8 +18,8 @@ import Intro from "../components/Intro.astro";
         <Nav />
         <header>
             <div class="flex flex-col pt-5 space-y-2 w-1/2 m-auto items-center">
-                <img
-                    src="/media/avatar.png"
+                <Image
+                    src={displayPic}
                     alt="avatar.png"
                     class="w-40 h-35 rounded-full"
                 />

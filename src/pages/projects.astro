@@ -1,0 +1,29 @@
+---
+import MainHead from "../components/MainHead.astro";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import ProjectDisplay from "../components/ProjectDisplay.astro";
+import { getCollection } from 'astro:content';
+
+// const projects = await Astro.glob("./*.mdx");
+const projects = await getCollection("projects");
+projects.sort((a, b) => a.data.rank - b.data.rank);
+---
+
+<head>
+    <MainHead title="My Projects" />
+</head>
+<body class="bg-zinc-200 dark:bg-zinc-900 text-black dark:text-white font-mono">
+    <Nav />
+    <div class="flex flex-col text-center pt-10 space-y-10">
+        <h2>Projects</h2>
+        {
+            projects.map((project) => (
+                <div class="px-5">
+                    <ProjectDisplay project={project} />
+                </div>
+            ))
+        }
+    </div>
+    <Footer />
+</body>

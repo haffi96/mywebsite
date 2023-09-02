@@ -1,30 +1,31 @@
 ---
 const { project } = Astro.props;
+import { Image } from "astro:assets";
 ---
 
 <a>
     <a>
         <button class="rounded-3xl border border-zinc-400 p-3">
             <div class="flex flex-col">
-                <p class="font-bold">{project.title}</p>
+                <p class="font-bold">{project.data.title}</p>
                 {
-                    project.frontmatter.site ? (
-                        <a class="underline" href={project.frontmatter.site}>
+                    project.data.site ? (
+                        <a class="underline" href={project.data.site}>
                             Demo site
                         </a>
                     ) : null
                 }
                 <div class="p-3">
-                    <a>{project.frontmatter.techstack}</a>
-                    <a class="underline" href={project.githublink1}>Repo</a>
+                    <a>{project.data.techstack}</a>
+                    <a class="pl-2 underline" href={project.data.githublink1}>Repo</a>
                 </div>
-                <a href={project.url}>
-                    <img
+                <!-- <a href={`/projects/${project.slug}`}> -->
+                    <Image
                         class="rounded-3xl"
-                        src={project.frontmatter.preview}
+                        src={project.data.preview}
                         alt="project preview"
                     />
-                </a>
+                <!-- </a> -->
             </div>
         </button>
     </a>
