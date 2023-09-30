@@ -321,6 +321,13 @@ declare module 'astro:content' {
 } & { render(): Render[".mdx"] };
 };
 "projects": {
+"dev-feed.mdx": {
+	id: "dev-feed.mdx";
+  slug: "dev-feed";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
 "encapsulate.mdx": {
 	id: "encapsulate.mdx";
   slug: "encapsulate";
