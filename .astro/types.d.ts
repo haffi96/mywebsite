@@ -321,6 +321,13 @@ declare module 'astro:content' {
 } & { render(): Render[".mdx"] };
 };
 "projects": {
+"ai-print-shop.mdx": {
+	id: "ai-print-shop.mdx";
+  slug: "ai-print-shop";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".mdx"] };
 "dev-feed.mdx": {
 	id: "dev-feed.mdx";
   slug: "dev-feed";
